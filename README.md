@@ -1,4 +1,4 @@
-# OpenGL Examples (CMP205)
+# OpenGL Examples (CMPN205)
 
 This repository contains examples of how to use OpenGL with C++17. It is made for the "Computer Graphics and Man-Machine Interfacing" course (CMPN205) at Cairo University Faculty of Engineering.
 
