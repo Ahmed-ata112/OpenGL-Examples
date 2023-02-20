@@ -6,10 +6,11 @@ void main() {
     // For this shader, we won't send any geometry data from the C++ code
     // so we will create the geometry data here
     // Therefore, we create an array of 3 positions (3x 3D vectors) and we will pick one later based on the vertex ID
-    const vec3 positions[3] = vec3[3](
-        vec3( 0.5, -0.5, 0.0),
+    const vec3 positions[4] = vec3[4](
+        vec3( 0.5, -0.6, 0.0),
         vec3(-0.5, -0.5, 0.0),
-        vec3( 0.0,  0.5, 0.0)
+        vec3( 0.0,  0.5, 0.0),
+        vec3( 0.0,  -0.8, 0.0)
     );
 
     // Pick a vertex position based on the builtin variable "gl_VertexID" which contains the index of the vertex
