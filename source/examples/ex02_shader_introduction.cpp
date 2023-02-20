@@ -128,7 +128,7 @@ class ShaderIntroductionApplication : public our::Application
         // mode (GLenum): what primitives to draw. GL_TRIANGLES will combine each 3 vertices into a triangle.
         // first (GLint): the index of the first vertex to draw. It is useless here since we are not receiving data through the vertex array.
         // count (GLsizei): How many vertices to send to the pipeline. Since we are sending 3 vertices only, only one triangle will be drawn.
-        glDrawArrays(GL_LINE_LOOP, 0, 4);
+        glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
 
         glBindVertexArray(0); // Unbind the buffer.
     }
