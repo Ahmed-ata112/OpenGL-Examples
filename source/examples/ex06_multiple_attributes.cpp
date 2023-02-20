@@ -1,18 +1,20 @@
 #include <application.hpp>
 #include <shader.hpp>
 
-
-class AttributesApplication : public our::Application {
+class AttributesApplication : public our::Application
+{
 
     our::ShaderProgram program;
     GLuint vertex_array = 0;
     GLuint position_vbo = 0, color_vbo = 0;
 
-    our::WindowConfiguration getWindowConfiguration() override {
-        return { "Multiple Attributes", {1280, 720}, false };
+    our::WindowConfiguration getWindowConfiguration() override
+    {
+        return {"Multiple Attributes", {1280, 720}, false};
     }
 
-    void onInitialize() override {
+    void onInitialize() override
+    {
         program.create();
         program.attach("assets/shaders/ex06_multiple_attributes/multiple_attributes.vert", GL_VERTEX_SHADER);
         program.attach("assets/shaders/ex04_varyings/varying_color.frag", GL_FRAGMENT_SHADER);
@@ -25,30 +27,29 @@ class AttributesApplication : public our::Application {
         glBindBuffer(GL_ARRAY_BUFFER, position_vbo);
 
         glm::vec3 positions[] = {
-                {-0.5, -0.5, 0.0},
-                { 0.5, -0.5, 0.0},
-                { 0.0,  0.5, 0.0}
-        };
+            {-0.5, -0.5, 0.0},
+            {0.5, -0.8, 0.0},
+            {0.0, 0.5, 0.0}};
 
-        glBufferData(GL_ARRAY_BUFFER, 3*3*sizeof(float), positions, GL_STATIC_DRAW);
+        glBufferData(GL_ARRAY_BUFFER, 3 * 3 * sizeof(float), positions, GL_STATIC_DRAW);
 
         // Setting attribute for (0) the postion.
-        glVertexAttribPointer(0, 3, GL_FLOAT, false, 0, (void*)0);
+        // positions is loc 0
+        glVertexAttribPointer(0, 3, GL_FLOAT, false, 0, (void *)0);
         glEnableVertexAttribArray(0);
 
         glGenBuffers(1, &color_vbo);
         glBindBuffer(GL_ARRAY_BUFFER, color_vbo);
 
         glm::vec<4, glm::uint8, glm::defaultp> colors[] = {
-                {255, 0, 0, 255},
-                { 0, 255, 0, 255},
-                { 0,  0, 255, 255}
-        };
+            {255, 0, 0, 255},
+            {0, 255, 0, 255},
+            {0, 0, 255, 255}};
 
-        glBufferData(GL_ARRAY_BUFFER, 3*4*sizeof(glm::uint8), colors, GL_STATIC_DRAW);
-
+        glBufferData(GL_ARRAY_BUFFER, 3 * 4 * sizeof(glm::uint8), colors, GL_STATIC_DRAW);
+        // color location is 1
         // Setting attribute for (1) the color, same as before replicating the process changing the size to 4*sizeof(glm::uint8)
-        glVertexAttribPointer(1, 4, GL_UNSIGNED_BYTE, true, 0, (void*)0);
+        glVertexAttribPointer(1, 4, GL_UNSIGNED_BYTE, true, 0, (void *)0);
         glEnableVertexAttribArray(1);
 
         glBindVertexArray(0);
@@ -56,7 +57,8 @@ class AttributesApplication : public our::Application {
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     }
 
-    void onDraw(double deltaTime) override {
+    void onDraw(double deltaTime) override
+    {
         glClear(GL_COLOR_BUFFER_BIT);
         glUseProgram(program);
         glBindVertexArray(vertex_array);
@@ -64,15 +66,16 @@ class AttributesApplication : public our::Application {
         glBindVertexArray(0);
     }
 
-    void onDestroy() override {
+    void onDestroy() override
+    {
         program.destroy();
         glDeleteVertexArrays(1, &vertex_array);
         glDeleteBuffers(1, &position_vbo);
         glDeleteBuffers(1, &color_vbo);
     }
-
 };
 
-int main(int argc, char** argv) {
+int main(int argc, char **argv)
+{
     return AttributesApplication().run();
 }

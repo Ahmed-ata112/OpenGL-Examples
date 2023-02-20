@@ -5,6 +5,7 @@
 // The "vertex array" object is what defines how the data is read from the vertex buffer and send to this attribute.
 // In "layout(location = 0)", we request that this attribute is put into location 0.
 // If we omit the "layout" specifier, OpenGL will automatically select a location for it.
+//any in in the vertex shader
 layout(location = 0) in vec3 position;
 
 void main() {
