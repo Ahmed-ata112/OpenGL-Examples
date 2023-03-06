@@ -2,6 +2,8 @@
 // The first line of any shader must a '#version" command which defines the glsl version to use
 
 // This is entry point of the vertex shader and it will be called for every vertex of our geometry
+
+uniform float time;
 void main() {
     // For this shader, we won't send any geometry data from the C++ code
     // so we will create the geometry data here

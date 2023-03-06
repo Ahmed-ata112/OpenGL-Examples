@@ -24,7 +24,7 @@ class AttributesApplication : public our::Application
         glBindVertexArray(vertex_array);
 
         glGenBuffers(1, &position_vbo);
-        glBindBuffer(GL_ARRAY_BUFFER, position_vbo);
+        glBindBuffer(GL_ARRAY_BUFFER, position_vbo); // bind it to operate on it later 
 
         glm::vec3 positions[] = {
             {-0.5, -0.5, 0.0},
