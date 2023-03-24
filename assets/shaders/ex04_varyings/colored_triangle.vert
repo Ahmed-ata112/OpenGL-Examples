@@ -21,7 +21,7 @@ void main() {
     );
 
     // As usual, we will pick one position and send to "gl_Position"
-    gl_Position = vec4(positions[gl_VertexID], 1.0);
+    gl_Position = vec4(positions[gl_VertexID],1);
     // Similarly, we'll pick a color and send it to a Varying
     vertex_color = colors[gl_VertexID];
 }
